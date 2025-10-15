@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            box-sizing: border-box;
+            font-family: 'Segoe UI';
+            user-select: none;
+        }
+
+        body {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            overflow-y: auto;
+            height: 100vh;
+            gap: 25px;
+        }
+
+        #template {
+            height: 720px;
+            width: 700px;
+            border-radius: 10px;
+            /* background-color: rgb(0, 0, 0, 0.1); */
+            border: 1px solid black;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .role {
+            font-weight: bold;
+            font-size: 18px;
+            color: rgba(12, 149, 0, 0.7);
+            width: 450px;
+        }
+
+        .role::placeholder {
+            color: rgba(12, 149, 0, 0.7);
+        }
+
+        .line-break {
+            height: 4px;
+            border-radius: 50px;
+            background-color: black;
+        }
+
+        .resume-info {
+            font-size: 16px;
+            font-weight: 500;
+            color: #838383;
+        }
+
+        .resume-info::placeholder {
+            font-size: 16px;
+            font-weight: 500;
+            color: #838383;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #controls button {
+            background: none;
+            border: none;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        input {
+            border: none;
+            background: none;
+            padding: 0px;
+        }
+
+        #username {
+            font-size: 30px;
+            color: #838383;
+            font-weight: bold;
+        }
+
+        .links {
+            font-size: 14px;
+            font-weight: bold;
+            width: 200px;
+        }
+
+        textarea {
+            height: 60px;
+            width: 100%;
+            resize: none;
+            border: none;
+            padding: 0px;
+            background: none;
+        }
+
+        .add-btns {
+            background: none;
+            border: none;
+            padding: 0px;
+            font-size: 18px;
+        }
+
+        #skill {
+            text-decoration: underline;
+        }
+
+        #skills-area {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 5px;
+        }
+
+        .year {
+            width: 60px;
+            background: none;
+        }
+
+        #company-accomp {
+            width: 400px;
+        }
+
+        #exp-area {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        #education-area {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        #canvas {
+            display: flex;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="controls">
+        <button type="button" id="edit-btn">EDIT</button>
+        <button type="button" id="save"></button>
+        <button type="button" id="dwnd-btn">DOWNLOAD</button>
+    </div>
+    <div id="canvas">
+        <div id="template">
+            <div>
+                <input id="username" placeholder="YOUR NAME" autocomplete="off" disabled>
+                <input class="role" id="user-role" placeholder="The role you are applying for?" autocomplete="off"
+                    disabled>
+                <p>@ <input class="links" id="email" placeholder="Email" type="email" disabled> 🔗 <input class="links"
+                        id="linked-in" type="url" placeholder="LinkedIn / Portfolio" disabled></p>
+            </div>
+            <div>
+                <h3>SUMMARY</h3>
+                <div class="line-break"></div>
+                <textarea class="resume-info" placeholder="Briefly explain why you're a great fit for the role."
+                    disabled></textarea>
+            </div>
+            <div>
+                <h3>SKILLS <button id="add-skills" class="add-btns" disabled>➕</button></h3>
+                <div class="line-break"></div>
+                <div id="skills-area">
+                    <input class="resume-info" id="skill" placeholder="Your Skill" disabled>
+                </div>
+            </div>
+
+            <!-- <div>
+            <h3>EXPERIENCE <button class="add-btns" id="add-exp" disabled>➕</button></h3>
+            <div class="line-break"></div>
+            <div id="exp-area">
+                <div>
+                    <input id="exp-title" class="resume-info" placeholder="Title" disabled>
+                    <input id="company-name" class="role" placeholder="Company Name" disabled>
+                    <div>
+                        <p class="resume-info">🗓️ From
+                            <select class="year" disabled>
+                            </select>
+                            To
+                            <select class="year" disabled>
+                            </select>
+                        </p>
+                    </div>
+                    <input id="company-description" class="resume-info" placeholder="Company Description" disabled>
+                    <button id="add-accomps" class="add-btns" disabled>➕</button>
+                    <ul id="accomps-area">
+                        <li><input class="resume-info" id="company-accomp" placeholder="Highlight your accomplishments">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div> -->
+            <div>
+                <h3>EDUCATION <button id="add-education" class="add-btns" disabled>➕</button></h3>
+                <div class="line-break"></div>
+                <div id="education-area">
+                    <div>
+                        <input class="resume-info" placeholder="Degree and Field of Study" disabled>
+                        <input class="role" placeholder="School / University" disabled>
+                        <div>
+                            <p class="resume-info">🗓️ From
+                                <select class="year" disabled>
+                                    <option value=""></option>
+                                    <option value="2025">2025</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                </select>
+                                To
+                                <select class="year" disabled>
+                                    <option value=""></option>
+                                    <option value="2025">2025</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                </select>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3>KEY ACHIEVEMENTS</h3>
+                <div class="line-break"></div>
+                <input class="resume-info" placeholder="Your Achievement" disabled>
+                <textarea placeholder="Describe what you did and the impact it had." disabled></textarea>
+            </div>
+            <div>
+                <h3>INTERESTS <button id="add-interest" class="add-btns" disabled>➕</button></h3>
+                <div class="line-break"></div>
+                <ul id="interest-area">
+                    <li>
+                        <input class="resume-info" placeholder="Career Interest / Passion" disabled>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3>TRAINING / COURSES <button id="add-course" class="add-btns" disabled>➕</button></h3>
+                <div class="line-break"></div>
+                <ul id="course-area">
+                    <li>
+                        <input class="resume-info" placeholder="Course Title" disabled>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.12.1/html2pdf.bundle.min.js"
+    integrity="sha512-D25Z8/1q2z65ZpJ3NzY6XiPZfwjhbv34OTQHDIZd+KPK+uWCovGt+fMkSzW8ArzCMFUgZt6Cdu7qoXNuy6a2GA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const editBtn = document.getElementById("edit-btn");
+        const downloadBtn = document.getElementById("dwnd-btn");
+
+        const inputs = document.querySelectorAll('input');
+        const textAreas = document.querySelectorAll('textarea');
+        const cals = document.querySelectorAll('.year');
+
+        const addBtns = document.querySelectorAll('.add-btns');
+        const addSkill = document.getElementById("add-skills");
+        const skillsArea = document.getElementById("skills-area");
+        const addEd = document.getElementById("add-education");
+        const edArea = document.getElementById("education-area");
+        const addInt = document.getElementById("add-interest");
+        const intArea = document.getElementById("interest-area");
+        const addCourse = document.getElementById("add-course");
+        const courseArea = document.getElementById("course-area");
+
+        let skillCount = 0;
+        let edCount = 0;
+        let intCount = 0;
+        let courseCount = 0;
+
+        downloadBtn.addEventListener('click', () => {
+            let resume = document.getElementById("canvas");
+            html2pdf().from(resume).save();
+        });
+
+        function editResume() {
+            editBtn.innerHTML = "EXIT"
+            console.log("Resume Editing Started.");
+            inputs.forEach(input => {
+                input.disabled = false;
+            })
+            addBtns.forEach(addBtn => {
+                addBtn.disabled = false;
+            });
+            textAreas.forEach(textArea => {
+                textArea.disabled = false;
+            })
+            cals.forEach(cal => {
+                cal.disabled = false
+            })
+            addSkill.addEventListener("click", addSkills);
+            addEd.addEventListener("click", addEds);
+            addInt.addEventListener("click", addInterests);
+            addCourse.addEventListener("click", addCourses);
+        }
+
+        function addSkills() {
+            if (skillCount == 8) {
+                console.log("No Space for more skills.");
+                return;
+            }
+            const skill = document.createElement('input');
+            skill.classList.add('resume-info');
+            skill.id = "skill";
+            skill.placeholder = 'Your Skill';
+            skillsArea.appendChild(skill);
+            skillCount++;
+        }
+
+        function addEds() {
+            if (edCount == 2) {
+                console.log("No space for more Education entries.");
+                return;
+            }
+
+            const div = document.createElement('div');
+            const deg = document.createElement('input');
+            deg.classList.add('resume-info');
+            deg.placeholder = 'Degree and Field of Study';
+            div.appendChild(deg);
+
+            const school = document.createElement('input');
+            school.classList.add('role');
+            school.placeholder = 'School / University';
+            div.appendChild(school);
+
+            const date = document.createElement('div');
+            const fromLabel = document.createElement('p');
+            fromLabel.classList.add('resume-info');
+            fromLabel.innerHTML = `🗓️ From <select class="year" disabled>
+                                    <option value=""></option>
+                                    <option value="2025">2025</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                </select> 
+                                To <select class="year" disabled>
+                                    <option value=""></option>
+                                    <option value="2025">2025</option>
+                                    <option value="2024">2024</option>
+                                    <option value="2023">2023</option>
+                                    <option value="2022">2022</option>
+                                    <option value="2021">2021</option>
+                                    <option value="2020">2020</option>
+                                    <option value="2019">2019</option>
+                                    <option value="2018">2018</option>
+                                    <option value="2017">2017</option>
+                                    <option value="2016">2016</option>
+                                    <option value="2015">2015</option>
+                                </select>`;
+            date.appendChild(fromLabel);
+            div.appendChild(date);
+            edArea.appendChild(div);
+            edCount++;
+        }
+
+        function addInterests() {
+            if (intCount == 2) {
+                console.log("No space for more Interests.");
+                return;
+            }
+
+            const interestList = document.createElement('li');
+            const interest = document.createElement('input');
+            interest.classList.add('resume-info');
+            interest.placeholder = 'Career Interest / Passion';
+            interestList.appendChild(interest);
+            intArea.appendChild(interestList);
+
+            intCount++;
+        }
+
+        function addCourses() {
+            if (courseCount == 4) {
+                console.log("No space for more Courses.");
+                return;
+            }
+
+            const courseList = document.createElement('li');
+            const course = document.createElement('input');
+            course.classList.add('resume-info');
+            course.placeholder = 'Course Title';
+            courseList.appendChild(course);
+            courseArea.appendChild(courseList);
+
+            courseCount++;
+        }
+
+        editBtn.addEventListener('click', editResume);
+        function resetResume() {
+            console.log("Resetting Resume.")
+            editBtn.innerHTML = "EDIT";
+            username.disabled = false;
+            username.innerHTML = "YOUR NAME";
+        }
+    });
+</script>
+
+</html>
